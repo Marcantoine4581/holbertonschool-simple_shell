@@ -1,5 +1,4 @@
 #include "shell.h"
-
 /**
  * main - main function
  * Description: main function
@@ -33,7 +32,9 @@ int main(void)
 		{
 			pid = fork();
 			if (pid == 0)
+			{
 				execve(fullcmd, argv, environ);
+			}
 			else
 			{
 				wait(NULL);
