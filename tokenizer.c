@@ -39,20 +39,3 @@ char **tokenizer(char *cmd)
 	free(copy_cmd1);
 	return (argv);
 }
-
-/*int main(void)
-{
-	unsigned int i = 0;
-	char *cmd = "/bin/ls";
-	char **argv = NULL;
-	//argv = malloc(sizeof(char *) * 3);
-	argv = tokenizer(cmd);
-	while (argv[i])
-	{
-		printf("this is argv %d : %s\n", i, argv[i]);
-		i++;
-	}
-	free(argv);
-	return (0);
-}
-*/
