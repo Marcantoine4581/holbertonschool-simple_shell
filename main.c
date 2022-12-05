@@ -11,7 +11,6 @@ int main(void)
 	size_t n;
 	char *buffer = NULL;
 	char **argv;
-	int i;
 	char *fullcmd;
 
 	write(1, ":) ", 3);
