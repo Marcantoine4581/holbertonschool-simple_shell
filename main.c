@@ -8,32 +8,35 @@
 int main(void)
 {
 	size_t n;
-	char *buffer = NULL, *exit = "exit";
-	char **argv;
+	ssize_t read;
+	char *buffer, *exit = "exit";
+	char **argv2;
 	char *fullcmd;
 	pid_t pid;
-	int keepgoing = 1;
-
+	int keepgoing = 1;	
 
 	while (keepgoing)
 	{
-		getline(&buffer, &n, stdin);
-		argv = tokenizer(buffer);
-		if (argv == NULL)
+		buffer = NULL;
+		read = getline(&buffer, &n, stdin);
+		if (read == -1)
+			break;
+		argv2 = tokenizer(buffer);
+		if (argv2 == NULL)
 			continue;
-		if (_strcmp(argv[0], exit) == 0)
+		if (_strcmp(argv2[0], exit) == 0)
 			{
 				keepgoing = 0;
 				break;
 			}
 		fullcmd = malloc(sizeof(char) * 20);
-		fullcmd = find_path(argv[0]);
+		fullcmd = find_path(argv2[0]);
 		if (fullcmd != NULL)
 		{
 			pid = fork();
 			if (pid == 0)
 			{
-				execve(fullcmd, argv, environ);
+				execve(fullcmd, argv2, environ);
 			}
 			else
 			{
