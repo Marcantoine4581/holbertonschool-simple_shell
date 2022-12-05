@@ -35,12 +35,6 @@ char *_getenv(const char *name)
 	}
 	token = strtok(NULL, "=");
 	buffer = _strdup(token);
-/*	for (i = 0; env_copy[i]; i++)
-	{
-		free(env_copy[i]);
-	}
-	free(env_copy[i]);
-	free(env_copy);*/
 	return (buffer);
 }
 
@@ -68,11 +62,10 @@ char *find_path(char *buffer)
 	if (stat(buffer, &st) == 0)
 	{
 		notfound = 1;
-		return(buffer);
+		return (buffer);
 	}
-	
-	
-	while(token)
+
+	while (token)
 	{
 		path = malloc(sizeof(char) * (_strlen(token) + _strlen(buffer) + 1));
 		_strcat(path, token);
