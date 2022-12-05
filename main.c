@@ -13,7 +13,6 @@ int main(void)
 	char **argv;
 	char *fullcmd;
 
-	write(1, ":) ", 3);
 	getline(&buffer, &n, stdin);
 	argv = tokenizer(buffer);
 	fullcmd = malloc(sizeof(char) * 20);
