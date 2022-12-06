@@ -43,7 +43,7 @@ The authorized functions to build the simple shell are the following :
 * ```write``` (man 2 write)
 
 ### Compilation and Usage
-To use the Simple Shell, clone this repository and compile all the c files in the repository and the header,then run the resulting executable.
+To use the Simple Shell, clone this repository and compile all the c files in the repository, then run the resulting executable.
 ```
 gcc *.c shell.h -o simple_shell
 ./simple_shell

@@ -16,8 +16,8 @@ char **tokenizer(char *cmd)
 	char **argv = NULL;
 	int argc = 0;
 
-	copy_cmd1 = strdup(cmd);
-	copy_cmd2 = strdup(cmd);
+	copy_cmd1 = _strdup(cmd);
+	copy_cmd2 = _strdup(cmd);
 	token = strtok(copy_cmd1, " \n");
 	if (token == NULL)
 		return (NULL);
