@@ -17,10 +17,15 @@ int main(void)
 
 	while (keepgoing)
 	{
+		if (isatty(STDIN_FILENO))
+			write(STDOUT_FILENO, "", 0);
 		buffer = NULL;
 		read = getline(&buffer, &n, stdin);
 		if (read == -1)
+		{
+			free(buffer);
 			break;
+		}
 		argv2 = tokenizer(buffer);
 		if (argv2 == NULL)
 		{
@@ -44,7 +49,9 @@ int main(void)
 				execve(fullcmd, argv2, environ);
 			}
 			else
+			{
 				wait(NULL);
+			}
 		}
 		freedoublep(argv2);
 		free(buffer);
