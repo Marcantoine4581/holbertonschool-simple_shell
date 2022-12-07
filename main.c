@@ -1,4 +1,5 @@
 #include "shell.h"
+
 /**
  * main - main function
  * Description: main function
@@ -9,11 +10,10 @@ int main(void)
 {
 	size_t n;
 	ssize_t read;
-	char *buffer, *exit = "exit";
+	char *buffer, *exit = "exit", *fullcmd;
 	char **argv2;
-	char *fullcmd;
 	pid_t pid;
-	int keepgoing = 1;	
+	int keepgoing = 1;
 
 	while (keepgoing)
 	{
@@ -23,13 +23,17 @@ int main(void)
 			break;
 		argv2 = tokenizer(buffer);
 		if (argv2 == NULL)
+		{
+			free(buffer);
 			continue;
+		}
 		if (_strcmp(argv2[0], exit) == 0)
 			{
+				freedoublep(argv2);
+				free(buffer);
 				keepgoing = 0;
 				break;
 			}
-		fullcmd = malloc(sizeof(char) * 20);
 		fullcmd = find_path(argv2[0]);
 		if (fullcmd != NULL)
 		{
@@ -39,11 +43,11 @@ int main(void)
 				execve(fullcmd, argv2, environ);
 			}
 			else
-			{
 				wait(NULL);
-			}
 		}
+		free(fullcmd);
+		freedoublep(argv2);
+		free(buffer);
 	}
-
 	return (0);
 }
