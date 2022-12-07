@@ -41,3 +41,23 @@ char **tokenizer(char *cmd)
 	free(copy_cmd1);
 	return (argv);
 }
+
+int main(void)
+{
+	char **argv;
+	int i = 0;
+	char **a;
+
+	argv = tokenizer("/bin/ls -l");
+	for (i = 0; argv[i]; i++)
+	{
+		printf("argv = %s\n", argv[i]);
+	}
+	for (a = argv; *a; a++)
+	{
+  		free(*a);
+	}
+	free(argv);
+	return (0);
+}
+
