@@ -10,7 +10,7 @@ int main(void)
 {
 	size_t n;
 	ssize_t read;
-	char *buffer, *exit = "exit", *fullcmd;
+	char *buffer, *exit = "exit", *fullcmd = NULL;
 	char **argv2;
 	pid_t pid;
 	int keepgoing = 1;
@@ -29,6 +29,7 @@ int main(void)
 		}
 		if (_strcmp(argv2[0], exit) == 0)
 			{
+				free(fullcmd);
 				freedoublep(argv2);
 				free(buffer);
 				keepgoing = 0;
@@ -45,7 +46,6 @@ int main(void)
 			else
 				wait(NULL);
 		}
-		free(fullcmd);
 		freedoublep(argv2);
 		free(buffer);
 	}
