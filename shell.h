@@ -35,6 +35,7 @@ char *_strcpy(char *dest, const char *src);
 
 /* Environment functions */
 char *find_path(char *cmd);
+void freedoublep(char **p);
 char *_getenv(const char *name);
 char **tokenizer(char *cmd);
 
