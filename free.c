@@ -9,12 +9,12 @@
 
 void freedoublep(char **p)
 {
-        int i = 0;
+	int i;
 
-        if (p != NULL)
-        {
-                for (i; p[i]; i++)
-                        free(p[i]);
-                free(p);
-        }
+	if (p != NULL)
+	{
+		for (i = 0; p[i]; i++)
+			free(p[i]);
+		free(p);
+	}
 }
