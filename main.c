@@ -34,7 +34,7 @@ int main(void)
 		}
 		if (_strcmp(argv2[0], exit) == 0)
 			{
-				free(fullcmd);
+				/*free(fullcmd);*/
 				freedoublep(argv2);
 				free(buffer);
 				keepgoing = 0;
@@ -53,8 +53,19 @@ int main(void)
 				wait(NULL);
 			}
 		}
-		freedoublep(argv2);
-		free(buffer);
+		if (fullcmd != NULL)
+		{
+			if (_strcmp(buffer, fullcmd) != 0)
+				free(fullcmd);
+			freedoublep(argv2);
+			free(buffer);
+		}
+		else
+		{
+			freedoublep(argv2);
+			free(fullcmd);
+			free(buffer);
+		}
 	}
 	return (0);
 }
