@@ -16,7 +16,7 @@ char **tokenizer(char *cmd)
 	int argc = 0;
 
 	copy_cmd1 = _strdup(cmd);
-	token = strtok(cmd, " \n");
+	token = strtok(copy_cmd1, " \n");
 	if (token == NULL)
 		return (NULL);
 
@@ -28,13 +28,14 @@ char **tokenizer(char *cmd)
 
 	argv = malloc(sizeof(char *) * (argc + 1));
 
-	token = strtok(copy_cmd1, " \n");
+	token = strtok(cmd, " \n");
 	while (token)
 	{
-		argv[i] = token;
+		argv[i] = _strdup(token);
 		token = strtok(NULL, " \n");
 		i++;
 	}
 	argv[i] = NULL;
+	free(copy_cmd1);
 	return (argv);
 }
