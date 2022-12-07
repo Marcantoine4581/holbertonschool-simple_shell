@@ -11,14 +11,12 @@ char **tokenizer(char *cmd)
 {
 	unsigned int i = 0;
 	char *copy_cmd1;
-	char *copy_cmd2;
 	char *token;
 	char **argv = NULL;
 	int argc = 0;
 
 	copy_cmd1 = _strdup(cmd);
-	copy_cmd2 = _strdup(cmd);
-	token = strtok(copy_cmd1, " \n");
+	token = strtok(cmd, " \n");
 	if (token == NULL)
 		return (NULL);
 
@@ -30,7 +28,7 @@ char **tokenizer(char *cmd)
 
 	argv = malloc(sizeof(char *) * (argc + 1));
 
-	token = strtok(copy_cmd2, " \n");
+	token = strtok(copy_cmd1, " \n");
 	while (token)
 	{
 		argv[i] = token;
@@ -38,26 +36,5 @@ char **tokenizer(char *cmd)
 		i++;
 	}
 	argv[i] = NULL;
-	free(copy_cmd1);
 	return (argv);
 }
-
-int main(void)
-{
-	char **argv;
-	int i = 0;
-	char **a;
-
-	argv = tokenizer("/bin/ls -l");
-	for (i = 0; argv[i]; i++)
-	{
-		printf("argv = %s\n", argv[i]);
-	}
-	for (a = argv; *a; a++)
-	{
-  		free(*a);
-	}
-	free(argv);
-	return (0);
-}
-
