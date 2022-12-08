@@ -18,7 +18,10 @@ char **tokenizer(char *cmd)
 	copy_cmd1 = _strdup(cmd);
 	token = strtok(copy_cmd1, " \n");
 	if (token == NULL)
+	{
+		free(copy_cmd1);
 		return (NULL);
+	}
 
 	while (token)
 	{
