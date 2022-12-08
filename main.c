@@ -11,7 +11,6 @@ int main(void)
 	size_t n = 0;
 	ssize_t read = 0;
 	char *exit = "exit";
-	pid_t pid;
 	int keepgoing = 1;
 
 	while (keepgoing)
