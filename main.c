@@ -6,13 +6,11 @@
  * Return: 0
  */
 
-
 int main(void)
 {
-	size_t n;
-	ssize_t read;
-	char *exit = "exit", *fullcmd = NULL;
-	char **argv2;
+	size_t n = 0;
+	ssize_t read = 0;
+	char *exit = "exit";
 	pid_t pid;
 	int keepgoing = 1;
 
@@ -34,34 +32,17 @@ int main(void)
 			continue;
 		}
 		if (_strcmp(argv2[0], exit) == 0)
-			{
-				freedoublep(argv2);
-				free(buffer);
-				keepgoing = 0;
-				break;
-			}
-		fullcmd = find_path(argv2[0]);
-		if (fullcmd != NULL)
 		{
-			pid = fork();
-			if (pid == 0)
-				execve(fullcmd, argv2, environ);
-			else
-				wait(NULL);
-		}
-		if (fullcmd != NULL)
-		{
-			if (_strcmp(buffer, fullcmd) != 0)
-				free(fullcmd);
 			freedoublep(argv2);
 			free(buffer);
+			keepgoing = 0;
+			break;
 		}
+		finalcmd = find_path(argv2[0]);
+		if (finalcmd != NULL)
+			executecmd();
 		else
-		{
-			freedoublep(argv2);
-			free(fullcmd);
-			free(buffer);
-		}
+			freeall();
 	}
 	return (0);
 }

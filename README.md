@@ -78,6 +78,11 @@ If a match is found, it will execute the command, if not, it will display an err
 
 ### Manpage
 
+To read the Manpage of the simple shell, use :
+```
+man ./man_1_simple_shell
+```
+
 ### Bugs
 For now there are still memory leaks, we are currently working on debugging them.
 

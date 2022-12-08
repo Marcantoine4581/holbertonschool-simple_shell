@@ -11,7 +11,8 @@
 #include <signal.h>
 
 /* Variables globales*/
-char *buffer;
+char *buffer, *finalcmd;
+char **argv2;
 
 /* Global environemnt */
 extern char **environ;
@@ -51,5 +52,7 @@ void free_list(list_t *head);
 /* other functions */
 void _prompt(void);
 void  INThandler(int sig);
+void executecmd(void);
+void freeall(void);
 
 #endif
