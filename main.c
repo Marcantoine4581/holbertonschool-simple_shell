@@ -22,7 +22,6 @@ int main(void)
 		buffer = NULL;
 		read = getline(&buffer, &n, stdin);
 		signal(SIGINT, INThandler);
-		printf("read = %ld\n", read);
 		if (read == -1)
 		{
 			free(buffer);
