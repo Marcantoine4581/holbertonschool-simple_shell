@@ -17,10 +17,11 @@ int main(void)
 
 	while (keepgoing)
 	{
-		if (isatty(STDIN_FILENO))
-			write(STDOUT_FILENO, "", 0);
+		_prompt();
 		buffer = NULL;
 		read = getline(&buffer, &n, stdin);
+		signal(SIGINT, INThandler);
+		printf("read = %ld\n", read);
 		if (read == -1)
 		{
 			free(buffer);
@@ -45,13 +46,9 @@ int main(void)
 		{
 			pid = fork();
 			if (pid == 0)
-			{
 				execve(fullcmd, argv2, environ);
-			}
 			else
-			{
 				wait(NULL);
-			}
 		}
 		if (fullcmd != NULL)
 		{

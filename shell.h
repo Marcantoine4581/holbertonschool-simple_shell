@@ -8,6 +8,7 @@
 #include <sys/stat.h>
 #include <sys/types.h>
 #include <sys/wait.h>
+#include <signal.h>
 
 /* Global environemnt */
 extern char **environ;
@@ -43,5 +44,9 @@ char **tokenizer(char *cmd);
 list_t *add_node_end(list_t **head, const char *str);
 size_t print_list(const list_t *h);
 void free_list(list_t *head);
+
+/* other functions */
+void _prompt(void);
+void  INThandler(int sig);
 
 #endif
