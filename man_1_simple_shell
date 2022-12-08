@@ -1,0 +1,34 @@
+.TH "simple_shell" "1" "06/12/2022" "V1.0" "User Manuals"
+
+.SH NAME
+simple_shell - simple UNIX command interpreter
+
+.SH SYNOPSIS
+.B ./simple_shell\fR
+[command] [options]
+
+.SH DESCRIPTION
+simple_shell is a simple UNIX command language interpreter that reads commands from either a file or standard input and executes them.
+
+.SH OPTIONS
+No options on this release.
+
+.SH INVOCATION
+Simple Shell can be used interactively and non-interactively using pipes.
+
+.SH EXIT
+“Exit” is a built-in command that ends the program.
+
+.SH EXAMPLES
+input: ls -la
+
+output: The list of the files and hidden files under the current directory. 
+
+.SH BUGS
+At the moment we have some memory leaks to fix.
+
+.SH SEE ALSO
+execve(2), exit(3), fork(2), free(3), isatty(3), malloc(3), read(2), signal(2), stat(2), wait(2), write(2)
+
+.SH AUTHORS
+THOMAS BORDE and MARC-ANTOINE VANNIER
