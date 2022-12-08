@@ -10,7 +10,7 @@ int main(void)
 {
 	size_t n = 0;
 	ssize_t read = 0;
-	char *exit = "exit";
+	char *pexit = "exit";
 	int keepgoing = 1;
 
 	while (keepgoing)
@@ -22,7 +22,7 @@ int main(void)
 		if (read == -1)
 		{
 			free(buffer);
-			break;
+			exit(EXIT_SUCCESS);
 		}
 		argv2 = tokenizer(buffer);
 		if (argv2 == NULL)
@@ -30,12 +30,11 @@ int main(void)
 			free(buffer);
 			continue;
 		}
-		if (_strcmp(argv2[0], exit) == 0)
+		if (_strcmp(argv2[0], pexit) == 0)
 		{
 			freedoublep(argv2);
 			free(buffer);
-			keepgoing = 0;
-			break;
+			return (2);
 		}
 		finalcmd = find_path(argv2[0]);
 		if (finalcmd != NULL)
