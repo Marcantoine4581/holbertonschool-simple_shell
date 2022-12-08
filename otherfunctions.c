@@ -34,6 +34,7 @@ void _prompt(void)
 
 void  INThandler(int sig)
 {
+	free(buffer);
 	signal(sig, SIG_IGN);
 	exit(0);
 }

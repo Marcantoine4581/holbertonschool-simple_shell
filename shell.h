@@ -10,6 +10,9 @@
 #include <sys/wait.h>
 #include <signal.h>
 
+/* Variables globales*/
+char *buffer;
+
 /* Global environemnt */
 extern char **environ;
 
