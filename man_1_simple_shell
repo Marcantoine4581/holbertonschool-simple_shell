@@ -5,7 +5,7 @@ simple_shell - simple UNIX command interpreter
 
 .SH SYNOPSIS
 .B ./simple_shell\fR
-[command] [options]
+[command]
 
 .SH DESCRIPTION
 simple_shell is a simple UNIX command language interpreter that reads commands from either a file or standard input and executes them.
