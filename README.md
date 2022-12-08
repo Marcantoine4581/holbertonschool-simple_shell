@@ -83,8 +83,22 @@ To read the Manpage of the simple shell, use :
 man ./man_1_simple_shell
 ```
 
+### Valgrind
+To check on memory leaks, you can use :
+```
+valgrind ./simple_shell
+```
+To get more details about the leak, use :
+```
+valgrind --leak-check=full -v ./simple_shell
+```
+
 ### Bugs
-For now there are still memory leaks, we are currently working on debugging them.
+We have a few core dumped or invalid read in very specific cases.
+Example :
+```
+echo "      bin/ls     /bin/ls    /bin/ls    " | ./simple_shell
+```
 
 ### Authors
 * Marc-Antoine Vannier <[Marcantoine4581](https://github.com/Marcantoine4581)>
